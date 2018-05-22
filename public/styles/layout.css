@@ -29,9 +29,9 @@ body {
 
 body main{
   width: 450px;
-  text-align: center;
   background: white;
-  margin-top: 140px;
+  margin-top: 80px;
   margin-right: auto;
   margin-left: auto;
+  padding: 60px 20px;
 }
