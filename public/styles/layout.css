@@ -26,3 +26,12 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+body main{
+  width: 450px;
+  text-align: center;
+  background: white;
+  margin-top: 140px;
+  margin-right: auto;
+  margin-left: auto;
+}
