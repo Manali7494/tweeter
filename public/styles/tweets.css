@@ -21,6 +21,7 @@
 .tweet img{
   height: 3em;
   padding: 0.25em;
+  border-radius: 10px;
 }
 
 .tweet .username{
