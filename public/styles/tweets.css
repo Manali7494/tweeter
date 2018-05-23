@@ -1,7 +1,9 @@
 .tweet {
   margin: 1em 1em;
   background: white;
-  opacity: 0.7
+  opacity: 0.7;
+  word-wrap: break-word;
+
 }
 
  .tweet:hover {
