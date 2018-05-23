@@ -1,15 +1,15 @@
-#tweets {
+.tweet {
   margin: 1em 1em;
   background: white;
   opacity: 0.7
 }
 
- #tweets:hover{
+ .tweet:hover{
   opacity: 1;
 
 }
 
-#tweets header{
+.tweet header{
   border-radius: 10px 10px 0px 0px;
   height: 3em;
   margin: 0px;
@@ -18,18 +18,18 @@
 
 }
 
-#tweets img{
+.tweet img{
   height: 3em;
   padding: 0.25em;
 }
 
-#tweets .username{
+.tweet .username{
   display: inline-block;
   margin: 10px;
   vertical-align: top;
 }
 
-#tweets .tweeterId{
+.tweet .tweeterId{
   display: inline-block;
   vertical-align: top;
   margin: 15px;
@@ -38,7 +38,7 @@
   color: darkgray;
 }
 
-#tweets .content{
+.tweet .content{
   height: 100px;
   border: darkgray solid;
   border-top: 1px;
@@ -47,25 +47,25 @@
   padding-left: 10px;
 }
 
-#tweets footer{
+.tweet footer{
   height: 30px;
   border: 1px darkgray solid;;
   border-radius: 0px 0px 10px 10px;
   padding: 5px;
   font-size: 14px;
 }
-#tweets footer .days{
+.tweet footer .days{
   display: inline;
 }
 
-#tweets .icons{
+.tweet .icons{
 opacity: 0;
 float: right;
 color: green;
 }
 
 
-#tweets .icons:hover{
+.tweet .icons:hover{
   opacity: 1;
 }
 
