@@ -101,4 +101,12 @@ $(document).ready(function() {
 
   renderTweets(data);
 
+  $('input').on('click', function(){
+    event.preventDefault();
+    console.log('Button clicked, performing ajax call...');
+    var serialized = $('form').serialize();
+    $.post("/tweets", serialized, function(){
+      console.log('success');
+    });
+  });
 });
