@@ -35,16 +35,14 @@
   margin: 15px;
   float: right;
   font-size: 12px;
-  color: darkgray;
+  color: black;
 }
 
 .tweet .content{
-  height: 100px;
   border: darkgray solid;
   border-top: 1px;
   border-bottom: 1px;
-  line-height: 80px;
-  padding-left: 10px;
+  padding: 10px
 }
 
 .tweet footer{
@@ -55,11 +53,13 @@
   font-size: 14px;
 }
 .tweet footer .days{
+  padding-left: 10px;
   display: inline;
 }
 
 .tweet .icons{
 opacity: 0;
+padding-right: 10px;
 float: right;
 color: green;
 }
