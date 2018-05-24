@@ -5,7 +5,7 @@ $(document).ready(function() {
     let todayTime = (new Date()).getTime();
     let timeDifference = todayTime - createdTime;
     let diffIncludingToday = Math.ceil(timeDifference / (1000 * 3600 * 24));
-    return (diffIncludingToday);
+    return (diffIncludingToday-1);
   }
   function createTweetElement(tweetObject){
     let $tweet = $('<article>').addClass('tweet');
@@ -57,14 +57,16 @@ $(document).ready(function() {
     let value = textArea.val();
     if (value === "" || value === null){
       alert('Please enter a valid tweet');
+      return true;
     } else if (value.length > 140){
       alert('Please enter a tweet less than 140 characters');
+      return false;
     } else{
-      let serialized = $('form').serialize();
-      $.post("/tweets", serialized);
-      textArea.val('');
+      return true;
+
     }
   }
+
   function loadTweets(){
     $.get('/tweets', function(data){
       renderTweets(data);
@@ -73,12 +75,17 @@ $(document).ready(function() {
 
   $('input').on('click', function(){
     event.preventDefault();
-    validateForm($('form'));
-    $('#tweets-container').empty();
-    loadTweets();
+    if (validateForm($('form')) === true){
+      let serialized = $('form').serialize();
+      $.post("/tweets", serialized).done(function(response){
+        $('textArea').val('');
+        $('#tweets-container').empty();
+        loadTweets();
+      });
+    }
   });
 
-// Initial rendering
+  // Initial rendering
   loadTweets();
   $('.new-tweet').hide();
 
