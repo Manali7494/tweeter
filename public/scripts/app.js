@@ -5,11 +5,11 @@ $(document).ready(function() {
     let todayTime = (new Date()).getTime();
     let timeDifference = todayTime - createdTime;
     let diffIncludingToday = Math.ceil(timeDifference / (1000 * 3600 * 24));
-    return (diffIncludingToday-1);
+    return (diffIncludingToday - 1);
   }
+
   function createTweetElement(tweetObject){
     let $tweet = $('<article>').addClass('tweet');
-
 
     // Header
     let imageLink = tweetObject.user.avatars.regular;
@@ -52,6 +52,13 @@ $(document).ready(function() {
     }
   }
 
+
+  function loadTweets(){
+    $.get('/tweets', function(data){
+      renderTweets(data);
+    });
+  }
+
   function validateForm(form) {
     let textArea = form.find('textArea');
     let value = textArea.val();
@@ -63,15 +70,14 @@ $(document).ready(function() {
       return false;
     } else{
       return true;
-
     }
   }
 
-  function loadTweets(){
-    $.get('/tweets', function(data){
-      renderTweets(data);
-    });
-  }
+  $('.compose').on('click', function(){
+    $('.new-tweet').slideToggle();
+    $('.compose').toggleClass('clicked');
+    $('textArea').focus();
+  });
 
   $('input').on('click', function(){
     event.preventDefault();
@@ -88,11 +94,4 @@ $(document).ready(function() {
   // Initial rendering
   loadTweets();
   $('.new-tweet').hide();
-
-
-  $('.compose').on('click', function(){
-    $('.new-tweet').slideToggle();
-    $('.compose').toggleClass('clicked');
-    $('textArea').focus();
-  });
 });
