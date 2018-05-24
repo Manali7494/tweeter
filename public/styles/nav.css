@@ -23,3 +23,18 @@
   padding-left:10px;
   z-index: 1;
 }
+
+#nav-bar button{
+  margin-top: 15px;
+  float: right;
+  padding: 10px;
+  z-index: 1;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+#nav-bar button.clicked{
+  background-color: lightblue;
+  color: green;
+  border: 1px solid green;
+}

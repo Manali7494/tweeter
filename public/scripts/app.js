@@ -48,7 +48,7 @@ $(document).ready(function() {
   function renderTweets(tweets) {
     for (let singleTweet of tweets){
       let tweetElement = createTweetElement(singleTweet);
-      $("#tweets-container").append(tweetElement);
+      $("#tweets-container").prepend(tweetElement);
     }
   }
 
@@ -65,18 +65,27 @@ $(document).ready(function() {
       textArea.val('');
     }
   }
-
-  $('input').on('click', function(){
-    event.preventDefault();
-    validateForm($('form'));
-  });
-
   function loadTweets(){
     $.get('/tweets', function(data){
       renderTweets(data);
     });
   }
+
+  $('input').on('click', function(){
+    event.preventDefault();
+    validateForm($('form'));
+    $('#tweets-container').empty();
+    loadTweets();
+  });
+
+// Initial rendering
   loadTweets();
+  $('.new-tweet').hide();
 
 
+  $('.compose').on('click', function(){
+    $('.new-tweet').slideToggle();
+    $('.compose').toggleClass('clicked');
+    $('textArea').focus();
+  });
 });
