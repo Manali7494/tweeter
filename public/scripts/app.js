@@ -4,7 +4,8 @@ $(document).ready(function() {
   function getDays(createdTime){
     let todayTime = (new Date()).getTime();
     let timeDifference = todayTime - createdTime;
-    let diffIncludingToday = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    let miliSecPerDay = 1000 * 3600 * 24;
+    let diffIncludingToday = Math.ceil(timeDifference / miliSecPerDay);
     return (diffIncludingToday - 1);
   }
 
@@ -62,7 +63,7 @@ $(document).ready(function() {
   function validateForm(form) {
     let textArea = form.find('textArea');
     let value = textArea.val();
-    if (value === "" || value === null){
+    if (!value){
       alert('Please enter a valid tweet');
       return true;
     } else if (value.length > 140){
@@ -75,18 +76,18 @@ $(document).ready(function() {
 
   $('.compose').on('click', function(){
     $('.new-tweet').slideToggle();
-    $('.compose').toggleClass('clicked');
+    $(this).toggleClass('clicked');
     $('textArea').focus();
   });
 
-  $('input').on('click', function(){
+  $('input').on('click', function(event){
     event.preventDefault();
-    if (validateForm($('form')) === true){
-      let serialized = $('form').serialize();
+    let form = $('form');
+    if (validateForm(form)){
+      let serialized = form.serialize();
       $.post("/tweets", serialized).done(function(response){
         $('textArea').val('');
-        $('#tweets-container').empty();
-        loadTweets();
+        $("#tweets-container").prepend(createTweetElement(response));
       });
     }
   });
